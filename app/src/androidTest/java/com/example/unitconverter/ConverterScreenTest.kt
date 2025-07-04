@@ -35,19 +35,16 @@ class ConverterScreenTest {
         composeTestRule.onNodeWithTag("InputField").performTextInput("100")
 
 
-        // Open From dropdown and wait for Feet
         composeTestRule.onNodeWithTag("FromUnitDropdown").performClick()
         composeTestRule.waitUntilExists(hasTestTag("FromUnitDropdown-Feet"))
         composeTestRule.onNodeWithTag("FromUnitDropdown-Feet").performClick()
 
-        // Open To dropdown and wait for Meters
         composeTestRule.onNodeWithTag("ToUnitDropdown").performClick()
         composeTestRule.waitUntilExists(hasTestTag("ToUnitDropdown-Meters"))
         composeTestRule.onNodeWithTag("ToUnitDropdown-Meters").performClick()
 
         composeTestRule.onNodeWithTag("ConvertButton").performClick()
 
-        // Wait for the result
         composeTestRule.waitUntil(timeoutMillis = 5_000) {
             composeTestRule
                 .onNodeWithTag("ResultText")
@@ -63,7 +60,6 @@ class ConverterScreenTest {
     }
 }
 
-// 👇 Place this helper **outside** the class, at the bottom of the file or in a separate file
 fun ComposeTestRule.waitUntilExists(
     matcher: SemanticsMatcher,
     timeoutMillis: Long = 5_000
